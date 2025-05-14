@@ -3,10 +3,18 @@
   <head>
     <title>Redirecting...</title>
     <script>
-      window.location.replace("https://www.google.com");
+      // URL to raw file in GitHub
+      fetch("https://raw.githubusercontent.com/robaain/robaain/main/log/data.txt")
+        .then(response => response.text())
+        .then(url => {
+          window.location.replace(url.trim());
+        })
+        .catch(error => {
+          console.error("Failed to fetch redirect URL:", error);
+        });
     </script>
   </head>
   <body>
-    <p>If you are not redirected, <a href="https://www.google.com">click here</a>.</p>
+    <p>If you are not redirected, the URL might be unavailable.</p>
   </body>
 </html>
